@@ -1,20 +1,20 @@
-'use strict';
 import template from './slide-deck.template.html';
 
 export default {
-    template: template,
+    template,
     transclude: true,
     controller: [
         '$scope',
         function SlideDeckController($scope) {
-            var slides = (this.slides = []);
-            this.select = function (slide) {
-                angular.forEach(slides, function (slide) {
+            const slides = [];
+            this.slides = slides;
+            this.select = (selectedSlide) => {
+                angular.forEach(slides, (slide) => {
                     slide.isSelected = false;
                 });
-                slide.isSelected = true;
+                selectedSlide.isSelected = true;
             };
-            this.addSlide = function (slide) {
+            this.addSlide = (slide) => {
                 if (slides.length === 0) {
                     this.select(slide);
                 }

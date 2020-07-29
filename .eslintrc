@@ -14,7 +14,8 @@
         "no-unused-vars": 1,
         "import/prefer-default-export": 0,
         "indent": ["error", 4],
-        "linebreak-style": 0
+        "linebreak-style": 0,
+        "no-param-reassign": 0
     },
     "globals": {
         "GLOBAL": false,
