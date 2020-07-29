@@ -1,7 +1,8 @@
 'use strict';
+import template from './slide.template.html';
 
-angular.module('slide').component('slide', {
-    template: require('./slide.template.html'),
+export default {
+    template: template,
     transclude: true,
     require: {
         parent: '^slideDeck',
@@ -11,4 +12,4 @@ angular.module('slide').component('slide', {
             this.parent.addSlide(this);
         };
     },
-});
+};

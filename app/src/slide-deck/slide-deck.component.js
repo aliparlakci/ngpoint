@@ -1,7 +1,8 @@
 'use strict';
+import template from './slide-deck.template.html';
 
-angular.module('slideDeck').component('slideDeck', {
-    template: require('./slide-deck.template.html'),
+export default {
+    template: template,
     transclude: true,
     controller: [
         '$scope',
@@ -38,4 +39,4 @@ angular.module('slideDeck').component('slideDeck', {
             $scope.prev = this.prev;
         },
     ],
-});
+};
