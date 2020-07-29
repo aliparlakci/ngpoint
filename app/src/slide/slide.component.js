@@ -6,7 +6,7 @@ export default {
     require: {
         parent: '^slideDeck',
     },
-    controller: () => {
+    controller() {
         this.$onInit = () => this.parent.addSlide(this);
     },
 };

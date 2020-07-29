@@ -5,9 +5,22 @@ export default {
     transclude: true,
     controller: [
         '$scope',
-        function SlideDeckController($scope) {
+        '$interval',
+        function SlideDeckController($scope, $interval) {
             const slides = [];
             this.slides = slides;
+
+            let autoCommenceTimeout;
+
+            this.toggleAutoCommence = () => {
+                if (autoCommenceTimeout) {
+                    $interval.cancel(autoCommenceTimeout);
+                    autoCommenceTimeout = false;
+                } else {
+                    autoCommenceTimeout = $interval(() => this.next(), 100);
+                }
+            };
+
             this.select = (selectedSlide) => {
                 angular.forEach(slides, (slide) => {
                     slide.isSelected = false;
@@ -37,6 +50,7 @@ export default {
 
             $scope.next = this.next;
             $scope.prev = this.prev;
+            $scope.toggleAutoCommence = this.toggleAutoCommence;
         },
     ],
 };

@@ -1,0 +1,25 @@
+.deck_container {
+    width: 768px;
+    height: 768px;
+    position: absolute;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 1em;
+    background-color: white;
+}
+
+.current_slide {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em 1em 0 0;
+    background-color: aqua;
+}
+
+.nav_buttons {
+    margin: 1em;
+}
