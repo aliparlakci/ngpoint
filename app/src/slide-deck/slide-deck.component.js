@@ -17,7 +17,7 @@ export default {
                     $interval.cancel(autoCommenceTimeout);
                     autoCommenceTimeout = false;
                 } else {
-                    autoCommenceTimeout = $interval(() => this.next(), 100);
+                    autoCommenceTimeout = $interval(() => this.next(), 200);
                 }
             };
 
