@@ -8,9 +8,7 @@
         "angular": "1.8.0",
         "bootstrap": "^4.5.0",
         "jquery": "^3.5.1",
-        "popper.js": "^1.16.1",
-        "postcss-loader": "^3.0.0",
-        "sass-loader": "^9.0.2"
+        "popper.js": "^1.16.1"
     },
     "devDependencies": {
         "@babel/core": "^7.10.5",
@@ -18,8 +16,7 @@
         "babel-eslint": "^10.1.0",
         "babel-loader": "^8.1.0",
         "commitizen": "^4.1.2",
-        "cpx": "^1.5.0",
-        "css-loader": "^4.0.0",
+        "css-loader": "^4.1.0",
         "cz-conventional-changelog": "^3.2.0",
         "eslint": "^7.5.0",
         "eslint-config-airbnb-base": "^14.2.0",
@@ -35,22 +32,22 @@
         "rimraf": "^3.0.2",
         "style-loader": "^1.2.1",
         "webpack": "^4.44.0",
-        "webpack-cli": "^3.3.12"
+        "webpack-cli": "^3.3.12",
+        "webpack-dev-server": "^3.11.0"
     },
     "scripts": {
-        "prestart": "yarn && yarn build",
-        "start": "http-server ./app/dist -a localhost -p 3001 -c-1",
+        "prestart": "yarn",
+        "start": "webpack-dev-server --open",
         "build": "webpack",
-        "postinstall": "npm run copy-libs",
-        "update-deps": "npm update",
-        "postupdate-deps": "npm run copy-libs",
-        "copy-libs": "cpx \"node_modules/{angular,angular-*,bootstrap/dist}/**/*\" app/lib -C",
-        "pretest": "npm install",
+        "postinstall": "",
+        "update-deps": "yarn update",
+        "postupdate-deps": "",
+        "pretest": "yarn",
         "test": "karma start karma.conf.js",
         "test-single-run": "npm test -- --single-run",
-        "preupdate-webdriver": "npm install",
+        "preupdate-webdriver": "yarn",
         "update-webdriver": "webdriver-manager update",
-        "preprotractor": "npm run update-webdriver",
+        "preprotractor": "yarn update-webdriver",
         "protractor": "protractor e2e-tests/protractor.conf.js"
     },
     "config": {
