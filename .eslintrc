@@ -1,0 +1,33 @@
+{
+    "parser": "babel-eslint",
+    "env": {
+        "browser": true,
+        "es2020": true
+    },
+    "ecmaFeatures": {
+        "jsx": true
+    },
+    "extends": ["eslint:recommended", "airbnb-base"],
+    "rules": {
+        "no-undef": 2,
+        "semi": 2,
+        "no-unused-vars": 1,
+        "import/prefer-default-export": 0,
+        "indent": ["error", 4],
+        "linebreak-style": 0
+    },
+    "globals": {
+        "GLOBAL": false,
+        "it": false,
+        "expect": false,
+        "describe": false,
+        "$": true,
+        "require": true,
+        "process": true,
+        "angular": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    }
+}
