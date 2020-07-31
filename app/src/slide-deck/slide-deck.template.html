@@ -1,16 +1,19 @@
 <div class="deck_container">
+    <div class="nav">
+        <div class="nav_buttons">
+            <button ng-click="toggleAutoCommence()" type="button">
+                {{$ctrl.autoCommenceTimeout ? "Stop" : "Auto Commence"}}
+            </button>
+            <button ng-click="prev()" ng-hide="$ctrl.autoCommenceTimeout" type="button">
+                Prev
+            </button>
+            <button ng-click="next()" ng-hide="$ctrl.autoCommenceTimeout" type="button">
+                Next
+            </button>
+        </div>
+        <span class="info">Total of {{$ctrl.slides.length}} slides.</span>
+    </div>
     <div class="current_slide">
         <ng-transclude></ng-transclude>
-    </div>
-    <div class="nav_buttons">
-        <button ng-click="prev()" type="button">
-            Prev
-        </button>
-        <button ng-click="toggleAutoCommence()" type="button">
-            Auto Commence
-        </button>
-        <button ng-click="next()" type="button">
-            Next
-        </button>
     </div>
 </div>
