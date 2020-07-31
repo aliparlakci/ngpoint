@@ -10,14 +10,14 @@ export default {
             const slides = [];
             this.slides = slides;
 
-            let autoCommenceTimeout;
+            this.autoCommenceTimeout = false;
 
             this.toggleAutoCommence = () => {
-                if (autoCommenceTimeout) {
-                    $interval.cancel(autoCommenceTimeout);
-                    autoCommenceTimeout = false;
+                if (this.autoCommenceTimeout) {
+                    $interval.cancel(this.autoCommenceTimeout);
+                    this.autoCommenceTimeout = false;
                 } else {
-                    autoCommenceTimeout = $interval(() => this.next(), 200);
+                    this.autoCommenceTimeout = $interval(() => this.next(), 200);
                 }
             };
 
