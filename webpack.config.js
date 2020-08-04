@@ -32,4 +32,12 @@ module.exports = {
         contentBase: path.resolve(__dirname, 'app/dist'),
         hot: true,
     },
+    plugins: [
+        // Generates an `index.html` file with the <script> injected.
+        new HtmlWebpackPlugin({
+            inject: true,
+            template: path.resolve(__dirname, 'app/src/index.html'),
+            filename: 'index.html',
+        }),
+    ],
 };
