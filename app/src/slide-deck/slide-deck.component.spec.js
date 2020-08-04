@@ -1,6 +1,6 @@
-import './slide.module';
+import './slide-deck.module';
 
-beforeEach(angular.mock.module('app.slide'));
+beforeEach(angular.mock.module('app.slideDeck'));
 
 describe('dummy component', () => {
     it(
@@ -8,7 +8,7 @@ describe('dummy component', () => {
         angular.mock.inject(
             /* @ngInject */ ($rootScope, $componentController) => {
                 const $scope = $rootScope.$new();
-                const sut = $componentController('slide', { $scope });
+                const sut = $componentController('slideDeck', { $scope });
                 expect(sut).toBeDefined();
             },
         ),
