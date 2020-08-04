@@ -787,6 +787,15 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@babel/types@^7.2.0":
+  version "7.11.0"
+  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.11.0.tgz#2ae6bf1ba9ae8c3c43824e5861269871b206e90d"
+  integrity sha512-O53yME4ZZI0jO1EVGtF1ePGl0LHirG4P1ibcD80XyzZcKhcMFeCXmh4Xb1ifGBIV233Qg12x4rBfQgA+tmOukA==
+  dependencies:
+    "@babel/helper-validator-identifier" "^7.10.4"
+    lodash "^4.17.19"
+    to-fast-properties "^2.0.0"
+
 "@commitlint/execute-rule@^9.1.1":
   version "9.1.1"
   resolved "https://registry.yarnpkg.com/@commitlint/execute-rule/-/execute-rule-9.1.1.tgz#59bfe018d85545881e4bd1a47f9cd155b2df4c2c"
@@ -1083,6 +1092,11 @@ ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.2, ajv@^6.5.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+angular-mocks@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/angular-mocks/-/angular-mocks-1.8.0.tgz#9d161fe2102e47e46ff78a4226e4dfec27c060c4"
+  integrity sha512-oFKJIqR6zcsW6V9UQMuUYCXIcTy+n7oYExXxZkvU57hwJQdU1nuNZcSMQA9URiEAPyo7v3bqm0eOP3Ezi7Bigg==
+
 angular@1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.8.0.tgz#b1ec179887869215cab6dfd0df2e42caa65b1b51"
@@ -1353,6 +1367,15 @@ babel-loader@^8.1.0:
     mkdirp "^0.5.3"
     pify "^4.0.1"
     schema-utils "^2.6.5"
+
+babel-plugin-angularjs-annotate@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-angularjs-annotate/-/babel-plugin-angularjs-annotate-0.10.0.tgz#4213b3aaae494a087aad0b8237c5d0716d22ca76"
+  integrity sha512-NPE7FOAxcLPCUR/kNkrhHIjoScR3RyIlRH3yRn79j8EZWtpILVnCOdA9yKfsOmRh6BHnLHKl8ZAThc+YDd/QwQ==
+  dependencies:
+    "@babel/code-frame" "^7.0.0"
+    "@babel/types" "^7.2.0"
+    simple-is "~0.2.0"
 
 babel-plugin-dynamic-import-node@^2.3.3:
   version "2.3.3"
@@ -1895,6 +1918,15 @@ cliui@^5.0.0:
     string-width "^3.1.0"
     strip-ansi "^5.2.0"
     wrap-ansi "^5.1.0"
+
+clone-deep@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/clone-deep/-/clone-deep-4.0.1.tgz#c19fd9bdbbf85942b4fd979c84dcf7d5f07c2387"
+  integrity sha512-neHB9xuzh/wk0dIHweyAXv2aPGZIVk3pLMe+/RNzINf17fe0OG96QroktYAUm7SM1PBnzTabaLboqqxDyMU+SQ==
+  dependencies:
+    is-plain-object "^2.0.4"
+    kind-of "^6.0.2"
+    shallow-clone "^3.0.0"
 
 code-point-at@^1.0.0:
   version "1.1.0"
@@ -4383,6 +4415,18 @@ karma-jasmine@^1.1.2:
   resolved "https://registry.yarnpkg.com/karma-jasmine/-/karma-jasmine-1.1.2.tgz#394f2b25ffb4a644b9ada6f22d443e2fd08886c3"
   integrity sha1-OU8rJf+0pkS5rabyLUQ+L9CIhsM=
 
+karma-webpack@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/karma-webpack/-/karma-webpack-4.0.2.tgz#23219bd95bdda853e3073d3874d34447c77bced0"
+  integrity sha512-970/okAsdUOmiMOCY8sb17A2I8neS25Ad9uhyK3GHgmRSIFJbDcNEFE8dqqUhNe9OHiCC9k3DMrSmtd/0ymP1A==
+  dependencies:
+    clone-deep "^4.0.1"
+    loader-utils "^1.1.0"
+    neo-async "^2.6.1"
+    schema-utils "^1.0.0"
+    source-map "^0.7.3"
+    webpack-dev-middleware "^3.7.0"
+
 karma@^3.1.4:
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/karma/-/karma-3.1.4.tgz#3890ca9722b10d1d14b726e1335931455788499e"
@@ -4500,7 +4544,7 @@ loader-runner@^2.4.0:
   resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.4.0.tgz#ed47066bfe534d7e84c4c7b9998c2a75607d9357"
   integrity sha512-Jsmr89RcXGIwivFY21FcRrisYZfvLMTWx5kOLc+JTxtpBOG6xML0vzbc6SEQG2FO9/4Fc3wW4LVcB5DmGflaRw==
 
-loader-utils@^1.2.3, loader-utils@^1.4.0:
+loader-utils@^1.1.0, loader-utils@^1.2.3, loader-utils@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.4.0.tgz#c579b5e34cb34b1a74edc6c1fb36bfa371d5a613"
   integrity sha512-qH0WSMBtn/oHuwjy/NucEgbx5dbxxnxup9s4PVXJUDHZBQY+s0NWA9rJf53RBnQZxfch7euUui7hpoAPvALZdA==
@@ -6195,6 +6239,13 @@ sha.js@^2.4.0, sha.js@^2.4.8:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
+shallow-clone@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/shallow-clone/-/shallow-clone-3.0.1.tgz#8f2981ad92531f55035b01fb230769a40e02efa3"
+  integrity sha512-/6KqX+GVUdqPuPPd2LxDDxzX6CAbjJehAAOKlNpqqUpAqPM6HeL8f+o3a+JsyGjn2lv0WY8UsTgUJjU9Ok55NA==
+  dependencies:
+    kind-of "^6.0.2"
+
 shebang-command@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/shebang-command/-/shebang-command-1.2.0.tgz#44aac65b695b03398968c39f363fee5deafdf1ea"
@@ -6223,6 +6274,11 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
   integrity sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA==
+
+simple-is@~0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/simple-is/-/simple-is-0.2.0.tgz#2abb75aade39deb5cc815ce10e6191164850baf0"
+  integrity sha1-Krt1qt453rXMgVzhDmGRFkhQuvA=
 
 slice-ansi@^2.1.0:
   version "2.1.0"
@@ -6375,6 +6431,11 @@ source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.0, source-map@~0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
+
+source-map@^0.7.3:
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
+  integrity sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
 
 spdx-correct@^3.0.0:
   version "3.1.1"
@@ -7123,7 +7184,7 @@ webpack-cli@^3.3.12:
     v8-compile-cache "^2.1.1"
     yargs "^13.3.2"
 
-webpack-dev-middleware@^3.7.2:
+webpack-dev-middleware@^3.7.0, webpack-dev-middleware@^3.7.2:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-3.7.2.tgz#0019c3db716e3fa5cecbf64f2ab88a74bab331f3"
   integrity sha512-1xC42LxbYoqLNAhV6YzTYacicgMZQTqRd27Sim9wn5hJrX3I5nxYy1SxSd4+gjUFsz1dQFj+yEe6zEVmSkeJjw==

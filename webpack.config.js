@@ -31,4 +31,7 @@ module.exports = {
         contentBase: path.resolve(__dirname, 'app/dist'),
         hot: true,
     },
+    optimization: {
+        minimize: true,
+    },
 };

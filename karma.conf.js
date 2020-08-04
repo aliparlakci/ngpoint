@@ -1,30 +1,23 @@
 //jshint strict: false
-module.exports = function(config) {
-  config.set({
+module.exports = function (config) {
+    config.set({
+        basePath: './app/src',
 
-    basePath: './app',
+        files: ['./app.tests.js'],
 
-    files: [
-      'lib/angular/angular.js',
-      'lib/angular-route/angular-route.js',
-      '../node_modules/angular-mocks/angular-mocks.js',
-      '**/*.module.js',
-      '*!(.module|.spec).js',
-      '!(lib)/**/*!(.module|.spec).js',
-      '**/*.spec.js'
-    ],
+        preprocessors: {
+            './app.tests.js': ['webpack'],
+            '**/*.test.js': ['webpack'],
+        },
 
-    autoWatch: true,
+        webpack: require('./webpack.config'),
 
-    frameworks: ['jasmine'],
+        autoWatch: true,
 
-    browsers: ['Chrome', 'Firefox'],
+        frameworks: ['jasmine'],
 
-    plugins: [
-      'karma-chrome-launcher',
-      'karma-firefox-launcher',
-      'karma-jasmine'
-    ]
+        browsers: ['Chrome'],
 
-  });
+        plugins: ['karma-webpack', 'karma-chrome-launcher', 'karma-jasmine'],
+    });
 };
