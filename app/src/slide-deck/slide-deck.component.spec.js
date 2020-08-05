@@ -1,8 +1,8 @@
 import './slide-deck.module';
 
-beforeEach(angular.mock.module('app.slideDeck'));
-
 describe('SlideDeck', () => {
+    beforeEach(angular.mock.module('app.slideDeck'));
+
     let ctrl;
 
     beforeEach(
