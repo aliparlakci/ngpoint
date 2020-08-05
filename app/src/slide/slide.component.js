@@ -6,7 +6,8 @@ export default {
     require: {
         parent: '^slideDeck',
     },
-    controller() {
+    controller: function SlideController() {
+        this.isSelected = false;
         this.$onInit = () => this.parent.addSlide(this);
     },
 };

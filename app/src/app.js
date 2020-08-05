@@ -7,4 +7,4 @@ import './slide';
 
 import './app.css';
 
-angular.module('app', ['slideDeck', 'slide']);
+angular.module('app', ['app.slideDeck', 'app.slide']);

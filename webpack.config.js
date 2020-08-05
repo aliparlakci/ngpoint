@@ -32,6 +32,9 @@ module.exports = {
         contentBase: path.resolve(__dirname, 'app/dist'),
         hot: true,
     },
+    optimization: {
+        minimize: true,
+    },
     plugins: [
         // Generates an `index.html` file with the <script> injected.
         new HtmlWebpackPlugin({
@@ -39,5 +42,8 @@ module.exports = {
             template: path.resolve(__dirname, 'app/src/index.html'),
             filename: 'index.html',
         }),
+        "karma-webpack",
+        "karma-chrome-launcher",
+        "karma-jasmine"
     ],
 };
