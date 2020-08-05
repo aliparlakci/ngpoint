@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: path.resolve(__dirname, 'app/src/app.js'),
@@ -34,4 +35,15 @@ module.exports = {
     optimization: {
         minimize: true,
     },
+    plugins: [
+        // Generates an `index.html` file with the <script> injected.
+        new HtmlWebpackPlugin({
+            inject: true,
+            template: path.resolve(__dirname, 'app/src/index.html'),
+            filename: 'index.html',
+        }),
+        "karma-webpack",
+        "karma-chrome-launcher",
+        "karma-jasmine"
+    ],
 };
