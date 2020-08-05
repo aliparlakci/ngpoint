@@ -3,11 +3,16 @@ module.exports = function (config) {
     config.set({
         basePath: './app/src',
 
-        files: ['./app.tests.js'],
+        files: [
+            '../../node_modules/angular/angular.js',
+            '../../node_modules/angular-mocks/angular-mocks.js',
+            '**/*.spec.js',
+        ],
 
         preprocessors: {
-            './app.tests.js': ['webpack'],
-            '**/*.test.js': ['webpack'],
+            '../../node_modules/angular/angular.js': ['webpack'],
+            '../../node_modules/angular-mocks/angular-mocks.js': ['webpack'],
+            '**/*.spec.js': ['webpack'],
         },
 
         webpack: require('./webpack.config'),
