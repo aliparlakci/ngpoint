@@ -42,8 +42,5 @@ module.exports = {
             template: path.resolve(__dirname, 'app/src/index.html'),
             filename: 'index.html',
         }),
-        "karma-webpack",
-        "karma-chrome-launcher",
-        "karma-jasmine"
     ],
 };
