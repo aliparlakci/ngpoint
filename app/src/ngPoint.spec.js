@@ -1,14 +1,12 @@
-/* eslint-disable no-undef */
-
 import ngPoint from './ngPoint';
 
 beforeEach(angular.mock.module(ngPoint));
 
-describe('Slide', () => {
+describe('ngPoint', () => {
     let _$compile, _$rootScope;
-    let slideDeckScope, slideScope;
-    let slideDeckController, slideController;
-    let slideElement;
+    let slideDeckController, slideControllers;
+    let slideElements;
+    let slideDeckElement;
     const testString = `
         Hey kız 17'li kız, gözleri yıldız yıldız
         Gel otur çakıllara, seninle konuşacağız
@@ -26,48 +24,44 @@ describe('Slide', () => {
             /* @ngInject */ ($rootScope, $componentController, $compile) => {
                 _$compile = $compile;
                 _$rootScope = $rootScope;
-
-                slideDeckScope = _$rootScope.$new();
-                slideDeckController = $componentController('slideDeck', {
-                    $scope: slideDeckScope,
-                });
             },
         ),
     );
 
-    beforeEach(
-        angular.mock.inject(() => {
-            slideElement = angular.element(`<slide>${testString}</slide>`);
-            slideElement.data('$slideDeckController', slideDeckController);
-            _$compile(slideElement[0])(slideDeckScope);
-            slideDeckScope.$digest();
-
-            slideController = slideElement.controller('slide');
-        }),
-    );
-
-    it('should call addSlide function of its parent and pass itself.', () => {
-        spyOn(slideDeckController, 'addSlide');
-
-        slideController.$onInit();
-
-        expect(slideDeckController.addSlide).toHaveBeenCalledWith(
-            slideController,
+    beforeEach(() => {
+        slideDeckElement = angular.element(
+            `<slide-deck>
+                    <slide>Bu birinci slayt.</slide>
+                    <slide>Bu ikinci slayt.</slide>
+                    <slide>Bu üçüncü slayt.</slide>
+                    <slide>Bu dördüncü slayt.</slide>
+                </slide-deck>`,
         );
+        _$compile(slideDeckElement)(_$rootScope.$new());
+        slideDeckController = slideDeckElement.controller('slideDeck');
     });
 
-    it('should not show its content to DOM if isSelected is false.', () => {
-        slideController.isSelected = false;
-        slideDeckScope.$digest();
-
-        expect(
-            angular
-                .element(slideElement[0].querySelector('#slide'))
-                .hasClass('ng-hide'),
-        ).toBe(true);
+    it('should add itself to the slideDeckController.slides.', () => {
+        expect(slideDeckController.slides.length).toBe(4);
     });
 
-    it('should transclude its content', () => {
-        expect(slideElement.html()).toContain(testString);
+    it('should not show its content to DOM if it is not selected.', () => {
+        slideDeckController.select(slideDeckController.slides[2]);
+        _$rootScope.$digest();
+
+        const slides = angular.element(
+            slideDeckElement[0].querySelectorAll('#slide'),
+        );
+
+        for (let index = 0; index < slides.length; index += 1) {
+            const condition = Object.values(slides[index].classList).includes(
+                'ng-hide',
+            );
+            if (index === 2) {
+                expect(condition).toBe(false);
+            } else {
+                expect(condition).toBe(true);
+            }
+        }
     });
 });
