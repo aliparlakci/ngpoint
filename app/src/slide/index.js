@@ -1,3 +1,3 @@
-import { slideModule } from './slide.module';
+import slideComponent from './slide.component';
 
-export default slideModule;
+export default slideComponent;
