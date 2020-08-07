@@ -1,27 +1,26 @@
 import ngPoint from './ngPoint';
 
+const checkIfOnlyGivenSlideSelected = (slides, index) => {
+    let condition;
+    for (let i = 0; i < slides.length; i += 1) {
+        condition = Object.values(slides[i].classList).includes('ng-hide');
+        if (i === index) {
+            expect(condition).toBe(false);
+        } else {
+            expect(condition).toBe(true);
+        }
+    }
+};
+
 beforeEach(angular.mock.module(ngPoint));
 
 describe('ngPoint', () => {
     let _$compile, _$rootScope;
-    let slideDeckController, slideControllers;
-    let slideElements;
     let slideDeckElement;
-    const testString = `
-        Hey kız 17'li kız, gözleri yıldız yıldız
-        Gel otur çakıllara, seninle konuşacağız
-        Eğer baban vermezse dağlara kaçacağız
-        Yedi renk martı gibi göklere çıkacağız, Efulim
-
-        Yel uçurur ağlari, oy farozda farozda
-        Kaçamayan kızları kuruturlar çirozda
-        Ah sevdalim uşak olsam, belune kuşak olsam
-        Okşarken yanağuni gülden yumuşak olsam, Efulim
-    `;
 
     beforeEach(
         angular.mock.inject(
-            /* @ngInject */ ($rootScope, $componentController, $compile) => {
+            /* @ngInject */ ($rootScope, $compile) => {
                 _$compile = $compile;
                 _$rootScope = $rootScope;
             },
@@ -31,37 +30,68 @@ describe('ngPoint', () => {
     beforeEach(() => {
         slideDeckElement = angular.element(
             `<slide-deck>
-                    <slide>Bu birinci slayt.</slide>
-                    <slide>Bu ikinci slayt.</slide>
-                    <slide>Bu üçüncü slayt.</slide>
-                    <slide>Bu dördüncü slayt.</slide>
-                </slide-deck>`,
+                <slide>Bu birinci slayt.</slide>
+                <slide>Bu ikinci slayt.</slide>
+                <slide>Bu üçüncü slayt.</slide>
+                <slide>Bu dördüncü slayt.</slide>
+            </slide-deck>`,
         );
         _$compile(slideDeckElement)(_$rootScope.$new());
-        slideDeckController = slideDeckElement.controller('slideDeck');
+        slideDeckElement = slideDeckElement[0];
     });
 
-    it('should add itself to the slideDeckController.slides.', () => {
-        expect(slideDeckController.slides.length).toBe(4);
-    });
+    it('should render the given slides to the DOM', () => {
+        const slides = slideDeckElement.querySelectorAll('#slide');
+        expect(slides.length).toBe(4);
 
-    it('should not show its content to DOM if it is not selected.', () => {
-        slideDeckController.select(slideDeckController.slides[2]);
-        _$rootScope.$digest();
+        const testContents = ['birinci', 'ikinci', 'üçüncü', 'dördüncü'];
 
-        const slides = angular.element(
-            slideDeckElement[0].querySelectorAll('#slide'),
-        );
-
-        for (let index = 0; index < slides.length; index += 1) {
-            const condition = Object.values(slides[index].classList).includes(
-                'ng-hide',
+        slides.forEach((slide, index) => {
+            expect(angular.element(slide).html()).toContain(
+                testContents[index],
             );
-            if (index === 2) {
-                expect(condition).toBe(false);
-            } else {
-                expect(condition).toBe(true);
-            }
-        }
+        });
+    });
+
+    it('should go on to the next slide when Next button is clicked', () => {
+        const cycle = [0, 1, 2, 3, 0, 1, 2, 3];
+
+        cycle.forEach((value, index) => {
+            _$rootScope.$digest();
+            checkIfOnlyGivenSlideSelected(
+                slideDeckElement.querySelectorAll('#slide'),
+                cycle[index],
+            );
+
+            const nextButton = slideDeckElement.querySelector('#next_button');
+            nextButton.click();
+
+            _$rootScope.$digest();
+            checkIfOnlyGivenSlideSelected(
+                slideDeckElement.querySelectorAll('#slide'),
+                cycle[index + 1] || cycle[0],
+            );
+        });
+    });
+
+    it('should go on to the previous slide when Previous button is clicked', () => {
+        const cycle = [0, 3, 2, 1, 0, 3, 2, 1];
+
+        cycle.forEach((value, index) => {
+            _$rootScope.$digest();
+            checkIfOnlyGivenSlideSelected(
+                slideDeckElement.querySelectorAll('#slide'),
+                cycle[index],
+            );
+
+            const prevButton = slideDeckElement.querySelector('#prev_button');
+            prevButton.click();
+
+            _$rootScope.$digest();
+            checkIfOnlyGivenSlideSelected(
+                slideDeckElement.querySelectorAll('#slide'),
+                cycle[index + 1] || cycle[0],
+            );
+        });
     });
 });
