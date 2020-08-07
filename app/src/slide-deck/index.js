@@ -1,3 +1,4 @@
-import { slideDeckModule } from './slide-deck.module';
+import slideDeckComponent from './slide-deck.component';
+import './slide-deck.css';
 
-export default slideDeckModule;
+export default slideDeckComponent;
