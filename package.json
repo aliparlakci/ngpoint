@@ -3,6 +3,12 @@
     "version": "1.0.0",
     "author": "Ali Parlakci <ali.parlakci@piworks.net>",
     "license": "MIT",
+    "keywords": [
+        "carousel",
+        "angularjs",
+        "node"
+    ],
+    "description": "An AngularJS carousel component for HTML content",
     "private": false,
     "main": "index.js",
     "files": [
@@ -30,6 +36,10 @@
     "devDependencies": {
         "@babel/core": "^7.10.5",
         "@babel/preset-env": "^7.10.4",
+        "@semantic-release/commit-analyzer": "^8.0.1",
+        "@semantic-release/git": "^9.0.0",
+        "@semantic-release/gitlab": "^6.0.4",
+        "@semantic-release/npm": "^7.0.5",
         "angular-mocks": "1.8.0",
         "babel-eslint": "^10.1.0",
         "babel-loader": "^8.1.0",

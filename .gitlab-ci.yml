@@ -3,6 +3,7 @@ default:
 stages:
     - test
     - e2e
+    - deploy
 
 test:
     stage: test
@@ -16,3 +17,10 @@ e2e:
         - apt-get -y install openjdk-8-jre
     script:
         - npm run e2e
+
+deploy:
+    stage: deploy
+    script:
+        - npx semantic-release
+    only:
+        - master
