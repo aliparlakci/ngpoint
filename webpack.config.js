@@ -2,9 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: path.resolve(__dirname, 'app/demo/app.js'),
+    entry: path.resolve(__dirname, 'demo/app.js'),
     output: {
-        path: path.resolve(__dirname, 'app/demo/dist'),
+        path: path.resolve(__dirname, 'demo/dist'),
         filename: 'bundle.js',
     },
     module: {
@@ -29,7 +29,7 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: path.resolve(__dirname, 'app/demo/dist'),
+        contentBase: path.resolve(__dirname, 'demo/dist'),
         hot: true,
     },
     optimization: {
@@ -39,7 +39,7 @@ module.exports = {
         // Generates an `index.html` file with the <script> injected.
         new HtmlWebpackPlugin({
             inject: true,
-            template: path.resolve(__dirname, 'app/demo/index.html'),
+            template: path.resolve(__dirname, 'demo/index.html'),
             filename: 'index.html',
         }),
     ],
