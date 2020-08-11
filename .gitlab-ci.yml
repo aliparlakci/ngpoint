@@ -25,5 +25,7 @@ deploy:
         - npm install @semantic-release/git
         - npm install @semantic-release/gitlab
         - npx semantic-release
+    except:
+        - tags
     only:
         - master
