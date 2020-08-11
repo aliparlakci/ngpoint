@@ -23,7 +23,7 @@
         "test:dev": "karma start --browsers ChromeDebugging --colors true --autoWatch true --singleRun false",
         "test": "karma start --browsers ChromeHeadless --colors true --autoWatch false --singleRun true",
         "preupdate-webdriver": "npm install",
-        "update-webdriver": "webdriver-manager update",
+        "update-webdriver": "webdriver-manager update --gecko=false",
         "pree2e": "npm run update-webdriver",
         "e2e": "protractor e2e-tests/protractor.conf.js"
     },
