@@ -1,9 +1,13 @@
 {
-    "name": "ng-point",
+    "name": "ngpoint",
     "version": "1.0.0",
     "author": "Ali Parlakci <ali.parlakci@piworks.net>",
     "license": "MIT",
-    "private": true,
+    "private": false,
+    "main": "index.js",
+    "files": [
+        "/src"
+    ],
     "scripts": {
         "prestart": "npm install",
         "start": "webpack-dev-server --open --mode development",

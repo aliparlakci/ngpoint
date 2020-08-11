@@ -4,18 +4,18 @@ webpackConfig.mode = 'development';
 
 module.exports = function (config) {
     config.set({
-        basePath: './app/src',
+        basePath: './src',
 
         files: [
-            '../../node_modules/angular/angular.js',
-            '../../node_modules/angular-mocks/angular-mocks.js',
-            '**/*.spec.js',
+            '../node_modules/angular/angular.js',
+            '../node_modules/angular-mocks/angular-mocks.js',
+            '*.spec.js',
         ],
 
         preprocessors: {
-            '../../node_modules/angular/angular.js': ['webpack'],
-            '../../node_modules/angular-mocks/angular-mocks.js': ['webpack'],
-            '**/*.spec.js': ['webpack'],
+            '../node_modules/angular/angular.js': ['webpack'],
+            '../node_modules/angular-mocks/angular-mocks.js': ['webpack'],
+            '*.spec.js': ['webpack'],
         },
 
         webpack: webpackConfig,
