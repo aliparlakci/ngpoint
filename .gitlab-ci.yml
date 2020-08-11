@@ -20,6 +20,7 @@ e2e:
 
 deploy:
     stage: deploy
+    image: node
     script:
         - npx semantic-release
     only:
