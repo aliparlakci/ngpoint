@@ -8,10 +8,6 @@
         "angularjs",
         "node"
     ],
-    "repository": {
-        "type": "git",
-        "url": "ssh://git@gitlab.piworks.net:ali.parlakci/ngpoint.git"
-    },
     "description": "An AngularJS carousel component for HTML content",
     "private": false,
     "main": "index.js",

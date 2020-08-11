@@ -22,8 +22,7 @@ deploy:
     stage: deploy
     image: node
     script:
-        - npm install @semantic-release/git
-        - npm install @semantic-release/gitlab
+        - npm install @semantic-release/git @semantic-release/gitlab
         - npx semantic-release
     except:
         - tags
