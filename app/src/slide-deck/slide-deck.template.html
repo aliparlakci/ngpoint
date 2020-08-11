@@ -2,33 +2,30 @@
     <div class="nav">
         <div class="nav_buttons">
             <button
-                id="auto"
                 ng-click="toggleAutoCommence()"
                 type="button"
-                class="btn btn-primary"
+                class="auto_button btn btn-primary"
             >
                 {{$ctrl.autoCommenceTimeout ? "Stop" : "Start"}}
             </button>
             <button
-                id="prev_button"
                 ng-click="prev()"
                 ng-hide="$ctrl.autoCommenceTimeout"
                 type="button"
-                class="btn btn-primary"
+                class="prev_button btn btn-primary"
             >
                 Previous
             </button>
             <button
-                id="next_button"
                 ng-click="next()"
                 ng-hide="$ctrl.autoCommenceTimeout"
                 type="button"
-                class="btn btn-primary"
+                class="next_button btn btn-primary"
             >
                 Next
             </button>
         </div>
         <span>Total of {{$ctrl.slides.length}} slides.</span>
     </div>
-    <div id="slides" ng-transclude></div>
+    <div class="slides" ng-transclude></div>
 </div>

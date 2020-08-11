@@ -41,7 +41,7 @@ describe('ngPoint', () => {
     });
 
     it('should render the given slides to the DOM', () => {
-        const slides = slideDeckElement.querySelectorAll('#slide');
+        const slides = slideDeckElement.querySelectorAll('.slide');
         expect(slides.length).toBe(4);
 
         const testContents = ['birinci', 'ikinci', 'üçüncü', 'dördüncü'];
@@ -59,16 +59,16 @@ describe('ngPoint', () => {
         cycle.forEach((value, index) => {
             _$rootScope.$digest();
             checkIfOnlyGivenSlideSelected(
-                slideDeckElement.querySelectorAll('#slide'),
+                slideDeckElement.querySelectorAll('.slide'),
                 cycle[index],
             );
 
-            const nextButton = slideDeckElement.querySelector('#next_button');
+            const nextButton = slideDeckElement.querySelector('.next_button');
             nextButton.click();
 
             _$rootScope.$digest();
             checkIfOnlyGivenSlideSelected(
-                slideDeckElement.querySelectorAll('#slide'),
+                slideDeckElement.querySelectorAll('.slide'),
                 cycle[index + 1] || cycle[0],
             );
         });
@@ -80,16 +80,16 @@ describe('ngPoint', () => {
         cycle.forEach((value, index) => {
             _$rootScope.$digest();
             checkIfOnlyGivenSlideSelected(
-                slideDeckElement.querySelectorAll('#slide'),
+                slideDeckElement.querySelectorAll('.slide'),
                 cycle[index],
             );
 
-            const prevButton = slideDeckElement.querySelector('#prev_button');
+            const prevButton = slideDeckElement.querySelector('.prev_button');
             prevButton.click();
 
             _$rootScope.$digest();
             checkIfOnlyGivenSlideSelected(
-                slideDeckElement.querySelectorAll('#slide'),
+                slideDeckElement.querySelectorAll('.slide'),
                 cycle[index + 1] || cycle[0],
             );
         });
