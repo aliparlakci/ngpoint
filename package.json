@@ -1,6 +1,6 @@
 {
     "name": "@aliparlakci/ngpoint",
-    "version": "1.2.0",
+    "version": "1.0.0",
     "author": "Ali Parlakci <ali.parlakci@piworks.net>",
     "license": "MIT",
     "keywords": [
@@ -14,6 +14,9 @@
     "files": [
         "/src"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "scripts": {
         "prestart": "npm install",
         "start": "webpack-dev-server --open --mode development",
