@@ -9,13 +9,19 @@ module.exports = function (config) {
         files: [
             '../node_modules/angular/angular.js',
             '../node_modules/angular-mocks/angular-mocks.js',
-            '*.spec.js',
+            '**/*.spec.js',
         ],
 
         preprocessors: {
-            '../node_modules/angular/angular.js': ['webpack'],
-            '../node_modules/angular-mocks/angular-mocks.js': ['webpack'],
-            '*.spec.js': ['webpack'],
+            '**/*.spec.js': ['webpack'],
+        },
+
+        reporters: ['progress', 'coverage'],
+
+        coverageReporter: {
+            includeAllSources: true,
+            dir: '../coverage/',
+            reporters: ['html', { type: 'text-summary' }],
         },
 
         webpack: webpackConfig,
@@ -60,6 +66,11 @@ module.exports = function (config) {
             stats: 'errors-only',
         },
 
-        plugins: ['karma-webpack', 'karma-chrome-launcher', 'karma-jasmine'],
+        plugins: [
+            'karma-webpack',
+            'karma-chrome-launcher',
+            'karma-jasmine',
+            'karma-coverage',
+        ],
     });
 };
