@@ -25,7 +25,10 @@
                 Next
             </button>
         </div>
-        <span>Total of {{$ctrl.slides.length}} slides.</span>
+        <span
+            >Total of {{$ctrl.slides.length}} slide{{$ctrl.slides.length > 1 ?
+            "s" : ""}}.</span
+        >
     </div>
     <div class="slides" ng-transclude></div>
 </div>
