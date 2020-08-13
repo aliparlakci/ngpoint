@@ -15,7 +15,9 @@ const checkIfOnlyGivenSlideSelected = (slides, index) => {
 beforeEach(angular.mock.module(ngPoint));
 
 describe('ngPoint', () => {
-    let _$compile, _$rootScope;
+    let _$compile;
+    let _$rootScope;
+    let slideDeckController;
     let slideDeckElement;
 
     beforeEach(
@@ -26,6 +28,43 @@ describe('ngPoint', () => {
             },
         ),
     );
+
+    it(
+        'should start the slide show when auto mode is on',
+        angular.mock.inject(
+            /* @ngInject */ ($interval, $componentController) => {
+                const $intervalSpy = jasmine
+                    .createSpy('$interval', $interval)
+                    .and.callThrough();
+                const controller = $componentController('slideDeck', {
+                    $scope: _$rootScope,
+                    $interval: $intervalSpy,
+                });
+
+                expect($intervalSpy).not.toHaveBeenCalled();
+                controller.toggleAutoCommence();
+                expect($intervalSpy).toHaveBeenCalledWith(controller.next, 200);
+
+                spyOn($intervalSpy, 'cancel');
+                controller.toggleAutoCommence();
+                expect($intervalSpy.cancel).toHaveBeenCalled();
+            },
+        ),
+    );
+
+    it('should not throw any errors if no slide is given', () => {
+        slideDeckElement = angular.element('<slide-deck></slide-deck>');
+        _$compile(slideDeckElement)(_$rootScope.$new());
+        slideDeckElement = slideDeckElement[0];
+        slideDeckController = angular
+            .element(slideDeckElement)
+            .controller('slideDeck');
+
+        slideDeckController.next();
+        slideDeckController.prev();
+        slideDeckController.toggleAutoCommence();
+        slideDeckController.toggleAutoCommence();
+    });
 
     beforeEach(() => {
         slideDeckElement = angular.element(
@@ -38,6 +77,9 @@ describe('ngPoint', () => {
         );
         _$compile(slideDeckElement)(_$rootScope.$new());
         slideDeckElement = slideDeckElement[0];
+        slideDeckController = angular
+            .element(slideDeckElement)
+            .controller('slideDeck');
     });
 
     it('should render the given slides to the DOM', () => {
@@ -51,6 +93,12 @@ describe('ngPoint', () => {
                 testContents[index],
             );
         });
+    });
+
+    it('should select the given slide', () => {
+        expect(slideDeckController.slides[3].isSelected).toBe(false);
+        slideDeckController.select(slideDeckController.slides[3]);
+        expect(slideDeckController.slides[3].isSelected).toBe(true);
     });
 
     it('should go on to the next slide when Next button is clicked', () => {

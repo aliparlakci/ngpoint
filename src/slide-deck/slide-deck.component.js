@@ -11,13 +11,12 @@ export default {
         this.slides = slides;
 
         this.autoCommenceTimeout = false;
-
         this.toggleAutoCommence = () => {
             if (this.autoCommenceTimeout) {
                 $interval.cancel(this.autoCommenceTimeout);
                 this.autoCommenceTimeout = false;
             } else {
-                this.autoCommenceTimeout = $interval(() => this.next(), 200);
+                this.autoCommenceTimeout = $interval(this.next, 200);
             }
         };
 
@@ -27,25 +26,32 @@ export default {
             });
             selectedSlide.isSelected = true;
         };
+
         this.addSlide = (slide) => {
             if (slides.length === 0) {
                 this.select(slide);
             }
             slides.push(slide);
         };
+
         this.next = () => {
+            if (slides.length === 0) {
+                return;
+            }
             const currentSlide = slides.shift();
-            currentSlide.isSelected = false;
             slides.push(currentSlide);
-            const nextSlide = slides[0] || {};
-            nextSlide.isSelected = true;
+            const nextSlide = slides[0];
+            this.select(nextSlide);
         };
+
         this.prev = () => {
+            if (slides.length === 0) {
+                return;
+            }
             const currentSlide = slides.shift();
             const nextSlide = slides.pop();
-            currentSlide.isSelected = false;
-            nextSlide.isSelected = true;
             slides.unshift(nextSlide, currentSlide);
+            this.select(nextSlide);
         };
 
         $scope.next = this.next;
