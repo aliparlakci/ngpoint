@@ -23,12 +23,12 @@
         "build": "webpack --mode production",
         "build:dev": "webpack --mode development",
         "pretest": "npm install",
-        "test:dev": "karma start --browsers ChromeDebugging --colors true --autoWatch true --singleRun false",
-        "test": "karma start --browsers ChromeHeadless --colors true --autoWatch false --singleRun true",
+        "test:dev": "NODE_ENV=test karma start --browsers ChromeDebugging --colors true --autoWatch true --singleRun false",
+        "test": "cross-env NODE_ENV=test karma start --browsers ChromeHeadless --colors true --autoWatch false --singleRun true",
         "preupdate-webdriver": "npm install",
         "update-webdriver": "webdriver-manager update --gecko=false",
         "pree2e": "npm run update-webdriver",
-        "e2e": "protractor e2e-tests/protractor.conf.js"
+        "e2e": "cross-env NODE_ENV=test protractor e2e-tests/protractor.conf.js"
     },
     "dependencies": {
         "angular": "1.8.0",
@@ -49,6 +49,7 @@
         "babel-plugin-angularjs-annotate": "^0.10.0",
         "babel-plugin-istanbul": "^6.0.0",
         "commitizen": "^4.1.2",
+        "cross-env": "^7.0.2",
         "css-loader": "^4.x.0",
         "cz-conventional-changelog": "^3.2.0",
         "eslint": "^7.5.0",
