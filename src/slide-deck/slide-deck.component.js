@@ -35,7 +35,7 @@ export default {
         };
 
         this.next = () => {
-            if (slides.length === 0) {
+            if (slides.length <= 1) {
                 return;
             }
             const currentSlide = slides.shift();
@@ -45,7 +45,7 @@ export default {
         };
 
         this.prev = () => {
-            if (slides.length === 0) {
+            if (slides.length <= 1) {
                 return;
             }
             const currentSlide = slides.shift();

@@ -5,12 +5,13 @@
                 ng-click="toggleAutoCommence()"
                 type="button"
                 class="auto_button btn btn-primary"
+                ng-hide="$ctrl.slides.length <= 1"
             >
                 {{$ctrl.autoCommenceTimeout ? "Stop" : "Start"}}
             </button>
             <button
                 ng-click="prev()"
-                ng-hide="$ctrl.autoCommenceTimeout"
+                ng-hide="$ctrl.autoCommenceTimeout || $ctrl.slides.length <= 1"
                 type="button"
                 class="prev_button btn btn-primary"
             >
@@ -18,7 +19,7 @@
             </button>
             <button
                 ng-click="next()"
-                ng-hide="$ctrl.autoCommenceTimeout"
+                ng-hide="$ctrl.autoCommenceTimeout || $ctrl.slides.length <= 1"
                 type="button"
                 class="next_button btn btn-primary"
             >
