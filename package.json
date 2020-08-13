@@ -23,7 +23,7 @@
         "build": "webpack --mode production",
         "build:dev": "webpack --mode development",
         "pretest": "npm install",
-        "test:dev": "NODE_ENV=test karma start --browsers ChromeDebugging --colors true --autoWatch true --singleRun false",
+        "test:dev": "cross-env NODE_ENV=test karma start --browsers ChromeDebugging --colors true --autoWatch true --singleRun false",
         "test": "cross-env NODE_ENV=test karma start --browsers ChromeHeadless --colors true --autoWatch false --singleRun true",
         "preupdate-webdriver": "npm install",
         "update-webdriver": "webdriver-manager update --gecko=false",
