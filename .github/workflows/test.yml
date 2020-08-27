@@ -1,0 +1,22 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+
+name: AngularJS Component
+
+on:
+  push:
+    branches: master
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: docker://weltn24/up-docker-node-chrome-headless:chrome-66_node-10.0_yarn-1.6.0
+      - run: npm test
+
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: docker://cronn/nodejs-chrome-firefox
+      - run: sudo apt-get -y install openjdk-8-jre
+      - run: npm run e2e
