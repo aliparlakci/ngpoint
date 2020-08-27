@@ -9,6 +9,7 @@
         "node"
     ],
     "description": "An AngularJS carousel component for HTML content",
+    "repository": "https://github.com/aliparlakci/ngpoint/",
     "private": false,
     "main": "index.js",
     "files": [
