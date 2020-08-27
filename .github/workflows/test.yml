@@ -11,7 +11,7 @@ jobs:
   docker_clean:
     runs-on: ubuntu-latest
     steps:
-      - run: /usr/bin/docker system prune -a -f
+      - run: /usr/bin/docker system images
   unittest:
     runs-on: ubuntu-latest
     steps:
