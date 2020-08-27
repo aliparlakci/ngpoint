@@ -18,7 +18,7 @@ jobs:
   e2e:
     runs-on: ubuntu-latest
     steps:
-      - uses: docker://cronn/nodejs-chrome-firefox:latest
+      - uses: docker://cronn/nodejs-chrome-firefox:latest_chrome
       - uses: actions/checkout@v2
       - run: sudo apt-get -y install openjdk-8-jre
       - run: google-chrome --version
