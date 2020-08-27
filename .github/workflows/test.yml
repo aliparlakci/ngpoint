@@ -12,11 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: docker://weltn24/up-docker-node-chrome-headless:chrome-66_node-10.0_yarn-1.6.0
+      - uses: actions/checkout@v2
       - run: npm test
 
   e2e:
     runs-on: ubuntu-latest
     steps:
       - uses: docker://cronn/nodejs-chrome-firefox
+      - uses: actions/checkout@v2
       - run: sudo apt-get -y install openjdk-8-jre
       - run: npm run e2e
